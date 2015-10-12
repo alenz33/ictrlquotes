@@ -16,30 +16,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 US
 
-import sys
-import os
-import sip
-sip.setapi('QString', 2)
-sip.setapi('QVariant', 2)
-
-from PyQt4.QtGui import QApplication
-
-from widgets.mainwindow import MainWindow
-
-# inserting this file into sys.path to allow absolute imports in project
-sys.path.insert(0, os.path.normpath(os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), '..')))
+from PyQt4.QtGui import QListWidgetItem
 
 
-def main(argv=None):
-    if not argv:
-        argv = sys.argv
-
-    app = QApplication(argv)
-    window = MainWindow()
-    window.show()
-    return app.exec_()
-
-
-if __name__ == '__main__':
-    sys.exit(main(sys.argv))
+class AuthorItem(QListWidgetItem):
+    def __init__(self, name, authorid, parent=None):
+        super(AuthorItem, self).__init__(name, parent)
+        self.authorid = authorid
