@@ -1,10 +1,7 @@
 #!/usr/bin/make -f
-# -*- makefile -*-
 
-# Uncomment this to turn on verbose mode.
-#export DH_VERBOSE=1
 DEBPYTHON_DEFAULT=2.7
-DEBPYTHON_SUPPORTED=2.8
+DEBPYTHON_SUPPORTED=2.7
 
 export DEBPYTHON_DEFAULT DEBPYTHON_SUPPORTED
 %:
