@@ -21,12 +21,12 @@ import os
 from PyQt4 import uic
 from PyQt4.QtGui import QMainWindow, QInputDialog
 
-from utilities import getResourcesPath
-from sql.sql import get_authors
-from sql.sql import add_author as sql_add_author
-from sql.sql import del_author as sql_del_author
-from sql.sql import add_quote as sql_add_quote
-from sql.sql import del_quote as sql_del_quote
+from ictrlquotes.utilities import getResourcesPath
+from ictrlquotes.sql.sql import get_authors
+from ictrlquotes.sql.sql import add_author as sql_add_author
+from ictrlquotes.sql.sql import del_author as sql_del_author
+from ictrlquotes.sql.sql import add_quote as sql_add_quote
+from ictrlquotes.sql.sql import del_quote as sql_del_quote
 from authoritem import AuthorItem
 from quoteitem import QuoteItem
 from addauthordialog import AddAuthorDialog
@@ -35,7 +35,8 @@ from addauthordialog import AddAuthorDialog
 class MainWindow(QMainWindow):
     def __init__(self, parent=None):
         super(MainWindow, self).__init__(parent)
-        uic.loadUi(os.path.join(getResourcesPath(), 'ui', 'mainwindow.ui'),
+        uic.loadUi(os.path.join(getResourcesPath(), 'widgets',
+                                                    'ui', 'mainwindow.ui'),
                    self)
         # connections
         self.actionExit.triggered.connect(self.close)

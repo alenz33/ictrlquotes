@@ -1,0 +1,21 @@
+Source: ictrlquotes
+Section: misc
+Priority: extra
+Maintainer: Andreas Schulz <andi.schulz@me.com>
+Build-Depends: debhelper (>= 9.0.0),
+ python (>= 2.7),
+ python-sip-dev,
+ python-qt4-dev,
+ python-qt4,
+ python-sqlalchemy,
+ python-mysqldb,
+ python-setuptools
+Standards-Version: 3.9.4
+
+Package: ictrlquotes
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, python-qt4, python-sqlalchemy, python-mysqldb
+Description: Wow
+ Such quotes
+ very ictrl
+ many fun
