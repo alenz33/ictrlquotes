@@ -23,3 +23,6 @@ class QuoteItem(QListWidgetItem):
     def __init__(self, name, quoteid, parent=None):
         super(QuoteItem, self).__init__(name, parent)
         self.quoteid = quoteid
+
+    def __lt__(self, otherItem):
+        return self.quoteid < otherItem.quoteid

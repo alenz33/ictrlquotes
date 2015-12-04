@@ -4,14 +4,15 @@ from setuptools import setup, find_packages
 
 setup(
     name='ictrlquotes',
-    version='0.1',
+    version='0.2',
     license='GPL',
     author='Andreas Schulz',
     author_email='andi.schulz@me.com',
     description='Quotes form (in)famous people at ictrl.',
     packages=find_packages(),
     package_data={'ictrlquotes': ['widgets/ui/mainwindow.ui',
-                                   'widgets/ui/addauthordialog.ui']},
+                                  'widgets/ui/addauthordialog.ui',
+                                  'res/reload.png']},
     scripts=['bin/ictrlquotes'],
     classifiers=[
         'Development Status :: 3 - Alpha',

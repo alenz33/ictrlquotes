@@ -16,16 +16,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 US
 
-import os
-
 from PyQt4 import uic
 from PyQt4.QtGui import QDialog
 
-from ictrlquotes.utilities import getResourcesPath
+from ictrlquotes.utilities import projectpath_join
 
 
 class AddAuthorDialog(QDialog):
     def __init__(self, parent=None):
         super(AddAuthorDialog, self).__init__(parent)
-        uic.loadUi(os.path.join(getResourcesPath(), 'widgets', 'ui',
-                                'addauthordialog.ui'), self)
+        uic.loadUi(projectpath_join('widgets', 'ui', 'addauthordialog.ui'),
+                   self)

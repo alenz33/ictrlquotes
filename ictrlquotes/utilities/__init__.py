@@ -19,8 +19,7 @@
 # a place for various utilities
 
 import os
+from functools import partial
 
-
-def getResourcesPath():
-    resPath = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
-    return resPath
+respath = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
+projectpath_join = partial(os.path.join, respath)

@@ -20,6 +20,10 @@ from PyQt4.QtGui import QListWidgetItem
 
 
 class AuthorItem(QListWidgetItem):
-    def __init__(self, name, authorid, parent=None):
+    def __init__(self, firstname, lastname, authorid, parent=None):
+        name = firstname + ' ' + lastname
         super(AuthorItem, self).__init__(name, parent)
         self.authorid = authorid
+
+    def __lt__(self, otherItem):
+        return self.authorid < otherItem.authorid
