@@ -1,3 +1,9 @@
+ictrlquotes (0.2-1) trusty; urgency=low
+
+  * Added refresh button.
+
+ -- Andreas Schulz <andi.schulz@me.com>  Sun, 06 Dec 2015 12:52:30 +0100
+
 ictrlquotes (0.1-1) trusty; urgency=low
 
   * First version.

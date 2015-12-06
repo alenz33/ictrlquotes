@@ -15,7 +15,4 @@ Standards-Version: 3.9.4
 Package: ictrlquotes
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, python-qt4, python-sqlalchemy, python-mysqldb
-Description: Wow
- Such quotes
- very ictrl
- many fun
+Description: Quotes from (in)famous ictrl people.
