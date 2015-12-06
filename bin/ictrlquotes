@@ -28,14 +28,13 @@ from PyQt4.QtGui import QApplication
 sys.path.insert(0, os.path.normpath(os.path.join(
     os.path.dirname(os.path.abspath(__file__)), '..')))
 
-from ictrlquotes.widgets.mainwindow import MainWindow
-
 
 def main(argv=None):
     if not argv:
         argv = sys.argv
 
     app = QApplication(argv)
+    from ictrlquotes.widgets.mainwindow import MainWindow
     window = MainWindow()
     window.show()
     return app.exec_()

@@ -16,15 +16,63 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 US
 
+import sys
+import os
+
+from PyQt4.QtGui import QMessageBox
+
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker, relationship, backref
+from ConfigParser import SafeConfigParser
+
+# path to ~/.config/ictrlquotes.cfg
+configfile = os.path.join(os.path.expanduser('~'),
+                          '.config',
+                          'ictrlquotes.cfg')
+parser = SafeConfigParser()
+try:
+    # try parsing out information out of config
+    parser.read(configfile)
+    sql_user = parser.get('sql', 'sql_user')
+    sql_url = parser.get('sql', 'sql_url')
+    sql_pw = parser.get('sql', 'sql_pw')
+    sql_db = parser.get('sql', 'sql_db')
+    usedefaults = False
+except Exception:
+    usedefaults = True
+if usedefaults:
+    # if any errors occured during parsing, replace config file with defaults.
+    open(configfile, 'w+').close()
+    parser.read(configfile)
+    parser.add_section('sql')
+    sql_user = 'quote_user'
+    sql_url = '172.25.2.7'
+    sql_pw = 'ictrl'
+    sql_db = 'ictrl'
+    parser.set('sql', 'sql_user', sql_user)
+    parser.set('sql', 'sql_url', sql_url)
+    parser.set('sql', 'sql_pw', sql_pw)
+    parser.set('sql', 'sql_db', sql_db)
+    with open(configfile, 'w') as dump:
+        parser.write(dump)
 
 Base = declarative_base()
-engine = create_engine('mysql://quote_user:' +
-                       'ictrl' +
-                       '@172.25.2.7/ictrl?charset=utf8',
+engine = create_engine('mysql://' + sql_user + ':' +
+                       sql_pw +
+                       '@' + sql_url + '/' +
+                       sql_db + '?charset=utf8',
                        echo=False)
+
+try:
+    connection = engine.connect()
+    connection.execute("SELECT 1")
+    connection.close()
+except Exception as e:
+    msg = QMessageBox()
+    msg.setText("Could not connect to database: " + e.args[0])
+    msg.exec_()
+    sys.exit(0)
 
 Session = sessionmaker(bind=engine)
 
