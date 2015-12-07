@@ -47,7 +47,7 @@ if usedefaults:
     parser.read(configfile)
     parser.add_section('sql')
     sql_user = 'quote_user'
-    sql_url = '172.25.2.7'
+    sql_url = 'server.as-schulz.de'
     sql_pw = 'ictrl'
     sql_db = 'ictrl'
     parser.set('sql', 'sql_user', sql_user)

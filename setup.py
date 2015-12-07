@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='ictrlquotes',
-    version='0.2',
+    version='0.5',
     license='GPL',
     author='Andreas Schulz',
     author_email='andi.schulz@me.com',
